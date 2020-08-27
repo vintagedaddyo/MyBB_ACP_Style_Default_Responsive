@@ -82,6 +82,7 @@ class Page extends DefaultPage
 		}
 
 		echo "	<script type=\"text/javascript\" src=\"../jscripts/jquery.js?ver=1823\"></script>\n";
+		echo "<script>var $ = jQuery.noConflict;</script>\n";
 		echo "	<script type=\"text/javascript\" src=\"../jscripts/jquery.plugins.min.js?ver=1821\"></script>\n";
 		echo "	<script type=\"text/javascript\" src=\"../jscripts/general.js?ver=1821\"></script>\n";
 		echo "	<script type=\"text/javascript\" src=\"./jscripts/admincp.js?ver=1821\"></script>\n";
@@ -269,7 +270,7 @@ lang.saved = \"{$lang->saved}\";
 		echo "  </div>\n";
 
         echo "	<script type=\"text/javascript\" src=\"styles/".$this->style."/jquery.js\"></script>\n";
-        echo "<script>jQuery.noConflict;</script>\n";
+        echo "<script>var $ = jQuery.noConflict;</script>\n";
 
 		echo "  <script type=\"text/javascript\" src=\"styles/".$this->style."/bootstrap.min.js\"></script>\n";
         echo "  <script type=\"text/javascript\" src=\"styles/".$this->style."/iCheck/icheck.min.js\"></script>";
