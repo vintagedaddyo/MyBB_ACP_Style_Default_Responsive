@@ -81,8 +81,7 @@ class Page extends DefaultPage
 			echo "	<link rel=\"stylesheet\" href=\"styles/{$this->style}/{$this->active_module}.css\" type=\"text/css\" />\n";
 		}
 
-		echo "	<script type=\"text/javascript\" src=\"../jscripts/jquery.js?ver=1823\"></script>\n";
-		echo "<script>var $ = jQuery.noConflict;</script>\n";
+		echo "	<script type=\"text/javascript\" src=\"../jscripts/jquery.js?ver=1823\"></script>\n";	
 		echo "	<script type=\"text/javascript\" src=\"../jscripts/jquery.plugins.min.js?ver=1821\"></script>\n";
 		echo "	<script type=\"text/javascript\" src=\"../jscripts/general.js?ver=1821\"></script>\n";
 		echo "	<script type=\"text/javascript\" src=\"./jscripts/admincp.js?ver=1821\"></script>\n";
@@ -101,14 +100,15 @@ class Page extends DefaultPage
                 "//]]>\n".
                 "</script>\n";
 
-       // ADD Progressbar
+       // ADD Progressbar              
        echo " <link rel=\"stylesheet\" href=\"styles/".$this->style."/progbar/nprogress.css\"/>\n";
        echo" <script type=\"text/javascript\" src=\"styles/".$this->style."/progbar/nprogress.js\"></script>\n";
 
        echo "<script>
             //<![CDATA[
+            var nprog = $.noConflict();
 	        NProgress.configure({ showSpinner: false });
-		    $(document).ready(function() {
+		    nprog(document).ready(function() {
 			NProgress.start();
 			NProgress.done();
 		    }); 
@@ -270,7 +270,7 @@ lang.saved = \"{$lang->saved}\";
 		echo "  </div>\n";
 
         echo "	<script type=\"text/javascript\" src=\"styles/".$this->style."/jquery.js\"></script>\n";
-        echo "<script>var $ = jQuery.noConflict;</script>\n";
+        echo "  <script>var $ = jQuery.noConflict;</script>\n";
 
 		echo "  <script type=\"text/javascript\" src=\"styles/".$this->style."/bootstrap.min.js\"></script>\n";
         echo "  <script type=\"text/javascript\" src=\"styles/".$this->style."/iCheck/icheck.min.js\"></script>";
@@ -535,8 +535,9 @@ lang.saved = \"{$lang->saved}\";
 <link type="text/css" rel="stylesheet" href="./styles/{$cp_style}/progbar/nprogress.css">
 <script type="text/javascript" src="./styles/{$cp_style}/progbar/nprogress.js"></script>
 <script>
+    var nprog = $.noConflict();
 	NProgress.configure({ showSpinner: true });
-		$(document).ready(function() {
+		nprog(document).ready(function() {
 			NProgress.start();
 			NProgress.done();
 		});
@@ -644,7 +645,8 @@ EOF;
 <script type="text/javascript" src="./styles/{$cp_style}/progbar/nprogress.js"></script>
 <script>
 	NProgress.configure({ showSpinner: true });
-		$(document).ready(function() {
+		var nprog = $.noConflict();
+		nprog(document).ready(function() {
 			NProgress.start();
 			NProgress.done();
 		});
