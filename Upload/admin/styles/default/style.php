@@ -171,7 +171,7 @@ lang.saved = \"{$lang->saved}\";
         echo "                  <span class=\" fas fa-angle-down\"></span>\n";
         echo "                </a>\n";
         echo "                <ul class=\"dropdown-menu dropdown-usermenu pull-right\">\n";
-        echo "                  <li><a href=\"{$mybb->settings['bburl']}\">{$lang->view_board}</a></li>\n";
+        echo "                  <li><a href=\"{$mybb->settings['bburl']}\" target=\"_blank\">{$lang->view_board}</a></li>\n";
         echo "                  <li><a href=\"index.php?action=logout&amp;my_post_key={$mybb->post_code}\" class=\"logout\"><i class=\"fas fa-sign-out-alt pull-right\"></i> {$lang->logout}</a></li>\n";
         echo "                </ul>\n";
 		echo "              </li>\n";
