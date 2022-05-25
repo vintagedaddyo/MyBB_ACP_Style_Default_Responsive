@@ -839,10 +839,10 @@ class Table extends DefaultTable
 			{
 				$table .= "              <th";
 				// @ 841 & 843
-				if(empty($data['extra']['class']))
-                {
-                    $data['extra']['class'] = null;
-                }
+				if(!isset($data['extra']['class']))
+				{
+					$data['extra']['class'] = '';
+				}
 				if($key == 0)
 					$data['extra']['class'] .= " first";
 				elseif(!isset($this->_headers[$key+1]))
@@ -997,13 +997,10 @@ class Form extends DefaultForm
 		if(!empty($name))
 			$textarea .= " name=\"{$name}\"";
 		// @ 990
-		if(empty($class))
-        {
-            $class = null;
-        }		
-		if(isset($options['class']))
-			$class = $options['class'];
-        $textarea .= " class=\"form-control {$class}\"";
+        if(isset($options['class']))
+        {		
+			$textarea .= " class=\"form-control {$options['class']}\"";
+		}	
 		if(isset($options['id']))
 			$textarea .= " id=\"{$options['id']}\"";
         else {
@@ -1101,13 +1098,10 @@ class Form extends DefaultForm
 				$options['size'] = count($option_list);
 		}
 		// @ 1094
-		if(empty($class))
-        {
-            $class= null;
-        }			
 		if(isset($options['class']))
-			$class = $options['class'];
-        $select .= " class=\"form-control {$class}\"";
+		{
+			$select .= " class=\"form-control {$options['class']}\"";
+		}   
 		if(isset($options['id']))
 			$select .= " id=\"{$options['id']}\"";
         else {
@@ -1122,7 +1116,6 @@ class Form extends DefaultForm
 		{
             $select_add = '';
             // @ 1119            
-			//if((!is_array($selected) || !empty($selected)) && ((string)$value == (string)$selected || (is_array($selected) && in_array((string)$value, $selected))))
 			if((!is_array($selected) || !empty($selected)) && ((is_array($selected) && in_array((string)$value, $selected)) || (!is_array($selected) && (string)$value === (string)$selected)))
 			{
 				$select_add = " selected=\"selected\"";
@@ -1210,13 +1203,10 @@ class Form extends DefaultForm
 			else
 				$select = "<select name=\"{$name}\" multiple=\"multiple\"";
 		    // @ 1199
-		    if(empty($class))
-            {
-                $class = null;
-            }				
 			if(isset($options['class']))
-				$select = $options['class'];
-            $select .= " class=\"form-control {$class}\"";
+			{
+				$select .= " class=\"form-control {$options['class']}\"";
+			}  
 			if(isset($options['id']))
 				$select .= " id=\"{$options['id']}\"";
             else {
@@ -1240,13 +1230,10 @@ class Form extends DefaultForm
 		if(isset($options['multiple']))
 			$select .= " multiple=\"multiple\"";
 		// @ 1240
-		if(empty($class))
-        {
-            $class = null;
-        }	
 		if(isset($options['class']))
-			$class = $options['class'];
-        $select .= " class=\"form-control {$class}\"";
+		{
+			$select .= " class=\"form-control {$options['class']}\"";
+		}
 
 		if(isset($options['id']))
 			$select .= " id=\"{$options['id']}\"";
