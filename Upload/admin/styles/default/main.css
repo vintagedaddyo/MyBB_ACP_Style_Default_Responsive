@@ -585,6 +585,8 @@ footer {
 	background: #FFFFFF;
 	border-radius: 0;
 	border-color: #E6E9ED;
+	padding: unset !important;
+	width: 98% !important;
 }
 .form-control:focus {
 	border-color: #0066A2;

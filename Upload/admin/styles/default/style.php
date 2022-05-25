@@ -15,8 +15,7 @@
  * Style Version: 1.2
  * 
  */
- 
- 
+
 // Disallow direct access to this file for security reasons
 if(!defined("IN_MYBB"))
 {
@@ -514,6 +513,12 @@ lang.saved = \"{$lang->saved}\";
 			$query_string = str_replace('?&', '?', $query_string);
 			$query_string = htmlspecialchars_uni($query_string);
 		}
+
+		// @ 545
+		if(empty($login_page))
+        {
+            $login_page = null;
+        }		
         
 		$login_page .= <<<EOF
 <!DOCTYPE html>
@@ -833,6 +838,11 @@ class Table extends DefaultTable
 			foreach($this->_headers as $key => $data)
 			{
 				$table .= "              <th";
+				// @ 841 & 843
+				if(empty($data['extra']['class']))
+                {
+                    $data['extra']['class'] = null;
+                }
 				if($key == 0)
 					$data['extra']['class'] .= " first";
 				elseif(!isset($this->_headers[$key+1]))
@@ -966,6 +976,11 @@ class Form extends DefaultForm
 	{
 		$input = "<input type=\"file\" name=\"{$name}\" id=\"i_{$name}\" class=\"sr-only inputfile\">\n";
         $input .= "<label for=\"i_{$name}\"";
+		// @ 981
+		if(empty($class))
+        {
+            $class = null;
+        }        
         if(isset($options['class']))
 			$class = $options['class'];
         $input .= " class=\"btn btn-primary {$class}\"";
@@ -981,6 +996,11 @@ class Form extends DefaultForm
 		$textarea = "<textarea";
 		if(!empty($name))
 			$textarea .= " name=\"{$name}\"";
+		// @ 990
+		if(empty($class))
+        {
+            $class = null;
+        }		
 		if(isset($options['class']))
 			$class = $options['class'];
         $textarea .= " class=\"form-control {$class}\"";
@@ -1080,6 +1100,11 @@ class Form extends DefaultForm
 			if(!isset($options['size']))
 				$options['size'] = count($option_list);
 		}
+		// @ 1094
+		if(empty($class))
+        {
+            $class= null;
+        }			
 		if(isset($options['class']))
 			$class = $options['class'];
         $select .= " class=\"form-control {$class}\"";
@@ -1092,9 +1117,12 @@ class Form extends DefaultForm
 		if(isset($options['size']))
 			$select .= " size=\"{$options['size']}\"";
 		$select .= ">\n";
+		
 		foreach($option_list as $value => $option)
 		{
-			$select_add = '';
+            $select_add = '';
+            // @ 1119            
+            $selected = $select_add;
 			if((!is_array($selected) || !empty($selected)) && ((string)$value == (string)$selected || (is_array($selected) && in_array((string)$value, $selected))))
 			{
 				$select_add = " selected=\"selected\"";
@@ -1130,7 +1158,11 @@ class Form extends DefaultForm
 			foreach($forum_cache as $fid => $forum)
 				$fselectcache[$forum['pid']][$forum['disporder']][$forum['fid']] = $forum;
 		}
-
+		// @ 1148
+		if(empty($options['main_option']))
+        {
+            $options['main_option'] = null;
+        }
 		if($options['main_option'] && $is_first)
 		{
 			$select_add = '';
@@ -1180,6 +1212,11 @@ class Form extends DefaultForm
 				$select = "<select name=\"{$name}\"";
 			else
 				$select = "<select name=\"{$name}\" multiple=\"multiple\"";
+		    // @ 1199
+		    if(empty($class))
+            {
+                $class = null;
+            }				
 			if(isset($options['class']))
 				$select = $options['class'];
             $select .= " class=\"form-control {$class}\"";
@@ -1205,7 +1242,11 @@ class Form extends DefaultForm
 
 		if(isset($options['multiple']))
 			$select .= " multiple=\"multiple\"";
-
+		// @ 1240
+		if(empty($class))
+        {
+            $class = null;
+        }	
 		if(isset($options['class']))
 			$class = $options['class'];
         $select .= " class=\"form-control {$class}\"";
@@ -1474,6 +1515,11 @@ class Form extends DefaultForm
 		foreach($buttons as $button)
 			$return .= "  " . $button." \n";
         $return .= "</div>";
+		// @ 1486
+		if(empty($this->_return))
+        {
+            $this->_return = null;
+        }	
 		if($this->_return == false)
 			echo $return;
 		else
